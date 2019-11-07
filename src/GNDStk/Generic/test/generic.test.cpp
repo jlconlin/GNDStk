@@ -7,18 +7,19 @@ using namespace njoy::GNDStk;
 
 SCENARIO( "Testing generic GNDStk Node" ){
   GIVEN( "a generic node" ){
-    decltype( auto ) genNode = generic::node( "XYs1d" );
+    Generic genNode{ std::string{ "XYs1d" } };
     WHEN( "data has been added" ){
-      genNode[ "metadata" ].insert( "interpolation", generic::Node_t{ "log-log" } );
-      genNode[ "metadata" ].insert( "index", generic::Node_t{ "0" } );
-      // genNode.insert( generic::Node_t{ "1.0, 2.0, 3.0" } );
+      genNode.metadata( "interpolation", "log-log" );
+      genNode.metadata( "index", "0" );
+      genNode.insert( "child" );
 
       THEN( "the metadata can be checked" ){
-        CHECK( "log-log" == 
-               generic::getString( genNode[ "metadata" ][ "interpolation" ] ) );
-        CHECK( "1" == generic::getString( genNode[ "metadata" ][ "index" ] ) );
+        CHECK( "log-log" == genNode.metadata( "interpolation" ) );
+        CHECK( "0" == genNode.metadata( "index" ) );
 
-        
+        auto metadata = genNode.metadata();
+        CHECK( "log-log" == metadata[ "interpolation" ].get< std::string >() );
+        CHECK( "0" == metadata[ "index" ].get< std::string >() );
       } // THEN
     } // WHEN
     WHEN( "accessing a node that doesn't exist" ){
