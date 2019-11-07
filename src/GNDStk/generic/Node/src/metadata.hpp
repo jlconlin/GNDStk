@@ -2,9 +2,9 @@ const auto& metadata() const{
   return (*this)[ "metadata" ];
 }
 
-// template< typename String >
-const auto& metadata( std::string key ) const{
-  return (*this)[ "metadata" ][ key ].get< std::string >();
+template< typename String >
+const auto& metadata( String key ) const{
+  return (*this)[ "metadata" ][ key ].template get< std::string >();
 }
 
 template< typename String1, typename String2 >

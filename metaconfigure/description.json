@@ -578,10 +578,11 @@
   },
   "header files": [
     "src/GNDStk.hpp",
-    "src/GNDStk/Generic.hpp",
-    "src/GNDStk/Generic/src/ctor.hpp",
-    "src/GNDStk/Generic/src/node.hpp",
-    "src/GNDStk/Generic/src/getString.hpp"
+    "src/GNDStk/generic.hpp",
+    "src/GNDStk/generic/Node.hpp",
+    "src/GNDStk/generic/Node/src/insert.hpp",
+    "src/GNDStk/generic/Node/src/ctor.hpp",
+    "src/GNDStk/generic/Node/src/metadata.hpp"
   ],
   "ignore pattern": "$^",
   "implementation files": [],
@@ -602,8 +603,8 @@
     "GNDStk": [
       "src/GNDStk/test/GNDStk.test.cpp"
     ],
-    "GNDStk.Generic": [
-      "src/GNDStk/Generic/test/generic.test.cpp"
+    "GNDStk.generic.Node": [
+      "src/GNDStk/generic/Node/test/Node.test.cpp"
     ]
   },
   "update": true

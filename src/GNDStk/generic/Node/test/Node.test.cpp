@@ -7,7 +7,7 @@ using namespace njoy::GNDStk;
 
 SCENARIO( "Testing generic GNDStk Node" ){
   GIVEN( "a generic node" ){
-    Generic genNode{ std::string{ "XYs1d" } };
+    generic::Node genNode{ std::string{ "XYs1d" } };
     WHEN( "data has been added" ){
       genNode.metadata( "interpolation", "log-log" );
       genNode.metadata( "index", "0" );

@@ -10,7 +10,7 @@
 namespace njoy{
 namespace GNDStk{
 
-#include "GNDStk/Generic.hpp"
+#include "GNDStk/generic.hpp"
 
 } // namespace GNDStk
 } // namespace njoy
