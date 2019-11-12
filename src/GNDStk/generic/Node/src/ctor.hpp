@@ -13,7 +13,7 @@ Node( pugi::xml_node xmlNode ):
     this->metadata( attr.name(), attr.value() );
   }
 
-  for( pugi::xml_node child: xmlNode.children() ) {
+  for( pugi::xml_node child: xmlNode ) {
     this->insert( child.name(), Node( child ) );
   }
 }
