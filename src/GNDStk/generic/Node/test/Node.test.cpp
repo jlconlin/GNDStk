@@ -11,7 +11,9 @@ SCENARIO( "Testing generic GNDStk Node" ){
     WHEN( "data has been added" ){
       genNode.metadata( "interpolation", "log-log" );
       genNode.metadata( "index", "0" );
-      genNode.insert( "child" );
+      genNode.insert( "child", generic::Node::makeList() );
+      auto childList = genNode[ "child" ];
+      childList.push_back( "child1", "child2", "child3" );
 
       THEN( "the metadata can be checked" ){
         CHECK( "log-log" == genNode.metadata( "interpolation" ) );
@@ -20,6 +22,10 @@ SCENARIO( "Testing generic GNDStk Node" ){
         auto metadata = genNode.metadata();
         CHECK( "log-log" == metadata[ "interpolation" ].get< std::string >() );
         CHECK( "0" == metadata[ "index" ].get< std::string >() );
+      } // THEN
+
+      THEN( "the children can be checked" ){
+        CHECK( 3 == genNode[ "child" ].list().size() );
       } // THEN
     } // WHEN
     WHEN( "accessing a node that doesn't exist" ){
@@ -30,7 +36,6 @@ SCENARIO( "Testing generic GNDStk Node" ){
   } // GIVEN
 } // SCENARIO
 
-pugi::xml_document doc;
 std::string testNode();
 SCENARIO( "Creating Node from XML" ){
   auto sNode = testNode();
@@ -38,7 +43,8 @@ SCENARIO( "Creating Node from XML" ){
 
   GIVEN( "a pugixml::node" ){
 
-    auto pNode = doc.load_string( sNode.c_str() );
+    // pugi::xml_document doc;
+    // auto pNode = doc.load_string( sNode.c_str() );
     
   } // GIVEN
 } // SCENARIO
