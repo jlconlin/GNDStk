@@ -43,8 +43,8 @@ SCENARIO( "Creating Node from XML" ){
 
   GIVEN( "a pugixml::node" ){
 
-    // pugi::xml_document doc;
-    // auto pNode = doc.load_string( sNode.c_str() );
+    pugi::xml_document doc;
+    auto pNode = doc.load_string( sNode.c_str() );
     
   } // GIVEN
 } // SCENARIO
