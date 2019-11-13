@@ -13,21 +13,26 @@ SCENARIO( "Creating Node from XML" ){
 
   GIVEN( "a pugixml::node" ){
     doc.load_string( sNode.c_str() );
-    
+
     WHEN( "a generic Node is created" ){
       generic::Node gNode{ doc.child( "regions1d" ) };
 
-      THEN( "the data can be verified" ){
-        { // regios1d
-          // auto regions1d = gNode[ "regions1d" ];
-          // CHECK( 0 == regions1d.metadata().size() );
-        }
-        
-      } // THEN
     } // WHEN
-    
+
   } // GIVEN
 } // SCENARIO
+
+/*
+SCENARIO( "testing" ){
+  doc.load_string( testNode().c_str( ) );
+  auto regions1d = doc.child( "regions1d" );
+  auto axes = regions1d.child( "axes" );
+
+  for( const auto& child: axes.children() ){
+    njoy::Log::info( "child: {}", child.name() );
+  }
+} // SCENARIO
+ */
 
 std::string testNode(){
   return R"xml(
@@ -37,15 +42,15 @@ std::string testNode(){
     <axis index="0" label="crossSection" unit="b"/>
   </axes>
   <XYs1d index="0">
-    <values length="42">
-      1.00000000e-05 0.000000e+00 2.53000000e-02 0.000000e+00 4.00000000e+05 0.000000e+00 4.01000000e+05 -1.660000e-03 4.50000000e+05 -1.660000e-03 4.51000000e+05 -1.720000e-03 5.00000000e+05 
+    <values length="4">
+      1.00000000e-05 0.500000e+00 2.53000000e-02 2.000000e+00 4.00000000e+05
     </values>
   </XYs1d>
   <XYs1d index="1">
-    <values length="5376">
-      8.80000000e+07 1.182806e+00 8.90000000e+07 1.171179e+00 9.00000000e+07 1.159459e+00 9.10000000e+07 1.146647e+00 9.20000000e+07 1.132441e+00 9.30000000e+07 1.117779e+00 9.40000000e+07 
+    <values length="4">
+      8.80000000e+07 1.182806e+00 8.90000000e+07 1.171179e+00
     </values>
   </XYs1d>
-  </regions1d>
+</regions1d>
                 )xml";
 }
