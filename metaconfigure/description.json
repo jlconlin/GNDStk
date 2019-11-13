@@ -621,7 +621,8 @@
       "src/GNDStk/generic/test/generic.test.cpp"
     ],
     "GNDStk.generic.Node": [
-      "src/GNDStk/generic/Node/test/Node.test.cpp"
+      "src/GNDStk/generic/Node/test/Node.test.cpp",
+      "src/GNDStk/generic/Node/test/pugiNode.test.cpp"
     ]
   },
   "update": true

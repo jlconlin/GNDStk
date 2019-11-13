@@ -1,5 +1,7 @@
 
-add_executable( GNDStk.generic.Node.test Node.test.cpp )
+add_executable( GNDStk.generic.Node.test
+                Node.test.cpp
+                pugiNode.test.cpp )
 target_compile_options( GNDStk.generic.Node.test PRIVATE ${${PREFIX}_common_flags}
 $<$<BOOL:${strict}>:${${PREFIX}_strict_flags}>$<$<CONFIG:DEBUG>:
 ${${PREFIX}_DEBUG_flags}
